@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;TemaControl&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-horizontal-layout style-name="app-shell" spacing="false" responsive size-full>
+   <vaadin-css-layout style-name="navigation-bar-container" width="200px" height-full>
+    <vaadin-css-layout style-name="navigation-bar" size-full>
+     <vaadin-label style-name="logo" width-full plain-text>
+       Control Escolar 
+     </vaadin-label>
+     <vaadin-button icon="fonticon://Vaadin-Icons/e7b3" style-name="menu borderless" plain-text _id="menuButton">
+       Menu 
+     </vaadin-button>
+     <vaadin-css-layout style-name="navigation" width-full _id="menu">
+      <vaadin-button icon="fonticon://Vaadin-Icons/e747" style-name="borderless" width-full plain-text _id="btnUsuarios">
+        Usuarios 
+      </vaadin-button>
+      <vaadin-button icon="fonticon://Vaadin-Icons/e62f" style-name="borderless" width-full plain-text _id="btnAlumnos">
+        Alumnos 
+      </vaadin-button>
+      <vaadin-button icon="fonticon://Vaadin-Icons/e6f9" style-name="borderless" width-full plain-text _id="btnMaterias">
+        Materias 
+      </vaadin-button>
+      <vaadin-button icon="fonticon://Vaadin-Icons/e61b" style-name="borderless" width-full plain-text _id="btnDocentes">
+        Docentes 
+      </vaadin-button>
+      <vaadin-button icon="fonticon://Vaadin-Icons/e728" style-name="borderless" width-full plain-text _id="btnEstados">
+        Estados 
+      </vaadin-button>
+     </vaadin-css-layout>
+    </vaadin-css-layout>
+   </vaadin-css-layout>
+   <vaadin-vertical-layout style-name="content-container" spacing="false" size-full margin="false" :expand>
+    <vaadin-horizontal-layout style-name="right-30" width-full _id="hlTitulo">
+     <vaadin-label style-name="view-title" width-full plain-text _id="viewTitle" :expand="3">
+       Sistema de Control Escolar de Ingeniería de Software 
+     </vaadin-label>
+     <vaadin-horizontal-layout width-full _id="hlUsuario" :middle :center :expand>
+      <vaadin-label style-name="usuario-principal" _id="lblUsuario">
+        usuario 
+      </vaadin-label>
+      <vaadin-button icon="fonticon://Vaadin-Icons/e60b" style-name="danger btn-salir" plain-text _id="btnSalir">
+        Salir 
+      </vaadin-button>
+     </vaadin-horizontal-layout>
+    </vaadin-horizontal-layout>
+    <vaadin-css-layout size-full _id="content" :expand>
+     <vaadin-css-layout style-name="padding-right padding-bottom padding-left" size-full>
+      <vaadin-css-layout style-name="content-section padding" size-full _id="contenedor"></vaadin-css-layout>
+     </vaadin-css-layout>
+    </vaadin-css-layout>
+   </vaadin-vertical-layout>
+  </vaadin-horizontal-layout>
+ </body>
+</html>

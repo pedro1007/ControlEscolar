@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-config.dtd">
+    
+  <configuration>
+	<typeAliases>
+		<typeAlias type="mx.edu.uaz.SistemaControlEscolar.modelos.Estado" alias="Estado" />
+		<typeAlias type="mx.edu.uaz.SistemaControlEscolar.modelos.Usuario" alias="Usuario" />
+		<typeAlias type="mx.edu.uaz.SistemaControlEscolar.modelos.Materia" alias="Materia" />
+		<typeAlias type="mx.edu.uaz.SistemaControlEscolar.modelos.Programa" alias="Programa" />
+	</typeAliases>
+	
+	<environments default="mysql">
+		<environment id="mysql">
+			<transactionManager type="JDBC" />
+			<dataSource type="UNPOOLED">
+				<property name="driver" value="com.mysql.cj.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://127.0.0.1:3306/controlescolar?useSSL=false&amp;serverTimezone=UTC" />
+				<property name="username" value="usercontrolescolar" />
+				<property name="password" value="usercontrolescolar123" />
+			</dataSource>
+		</environment>
+		
+	</environments>
+	
+	<mappers>
+		<mapper resource="mx/edu/uaz/SistemaControlEscolar/db/mappers/estado.xml" />
+		<mapper resource="mx/edu/uaz/SistemaControlEscolar/db/mappers/usuario.xml" />
+		<mapper resource="mx/edu/uaz/SistemaControlEscolar/db/mappers/materias.xml" />
+		<mapper resource="mx/edu/uaz/SistemaControlEscolar/db/mappers/programa.xml" />
+	</mappers>
+</configuration>
+  
+  
+  

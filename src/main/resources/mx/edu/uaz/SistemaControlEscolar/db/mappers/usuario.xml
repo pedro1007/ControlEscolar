@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="mappers">
+
+	<insert id="altaUsuario" parameterType="Usuario" >
+		INSERT INTO usuario
+			(nombre, apellidoPaterno, apellidoMaterno, usuario, 
+			password,fechaNac, perfil, mail, idEstado, cadena, estatus)
+		VALUES
+			(#{nombre},#{apellidoPaterno},#{apellidoMaterno},#{usuario},
+			#{password},#{fechaNac},#{perfil},#{mail}, #{estado.idEstado},
+			#{cadena},#{estatus})	
+					
+	</insert>
+	
+	<update id="modificarUsuario" parameterType="Usuario">
+		UPDATE usuario
+		SET 
+			nombre=#{nombre},
+			apellidoPaterno=#{apellidoPaterno}, 
+			apellidoMaterno=#{apellidoMaterno}, 
+			usuario=#{usuario}, 
+			password=#{password},
+			fechaNac=#{fechaNac}, 
+			perfil=#{perfil}, 
+			mail=#{mail}, 
+			idEstado=#{estado.idEstado}
+		WHERE
+			idUsuario=#{idUsuario}
+				
+	</update>
+	
+	<select id="obtenerTodosUsuarios" resultMap="resultMapUsuario">
+		SELECT
+			U.idUsuario, U.nombre, U.apellidoPaterno, U.apellidoMaterno, U.usuario, 
+			U.password,U.fechaNac, U.perfil, U.mail, E.idEstado, E.estado
+		FROM
+			usuario U INNER JOIN estado E on U.idEstado=E.idEstado;
+	
+	</select>
+	
+	<resultMap type="Usuario" id="resultMapUsuario">
+		<id property="idUsuario" column="idUsuario"/>
+		<result property="nombre" column="nombre"/>
+		<result property="apellidoPaterno" column="apellidoPaterno"/>
+		<result property="apellidoMaterno" column="apellidoMaterno"/>
+		<result property="usuario" column="usuario"/>
+		<result property="password" column="password"/>
+		<result property="fechaNac" column="fechaNac"/>
+		<result property="perfil" column="perfil"/>
+		<result property="mail" column="mail"/>
+		<association property="estado" javaType="Estado">
+			<id property="idEstado" column="idEstado"/>
+			<result property="estado" column="estado"/>
+		</association>
+	</resultMap>
+	
+	<delete id="eliminarUsuarios" >	
+		DELETE FROM usuario
+		WHERE idUsuario in (
+			<foreach collection="list" separator="," item="usuario">
+				#{usuario.idUsuario}			
+			</foreach>
+		)
+	</delete>
+	
+	<select id="buscaUsuario" resultType="Usuario" parameterType="Usuario">
+		SELECT
+			idUsuario, nombre, apellidoPaterno, apellidoMaterno, usuario, 
+			password,fechaNac, perfil, mail, cadena, estatus
+		FROM
+			usuario
+		WHERE usuario = #{usuario};
+	
+	</select>
+	
+</mapper>
+	
+ 

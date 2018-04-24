@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;TemaControl&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-css-layout style-name="form-template" responsive size-full>
+   <vaadin-css-layout caption="Información de la asignatura" style-name="form-section">
+    <vaadin-css-layout style-name="input-group">
+     <vaadin-css-layout style-name="input-wrapper">
+      <vaadin-text-field caption="Asignatura" placeholder="Nombre de materia" _id="tfAsignatura"></vaadin-text-field>
+     </vaadin-css-layout>
+     <vaadin-css-layout style-name="input-wrapper">
+      <vaadin-text-field caption="Crédtos" placeholder="Créditos de la materia" _id="tfCreditos"></vaadin-text-field>
+     </vaadin-css-layout>
+    </vaadin-css-layout>
+    <vaadin-css-layout style-name="input-group">
+     <vaadin-css-layout style-name="border">
+      <vaadin-css-layout style-name="input-wrapper">
+       <vaadin-combo-box caption="Programa Académico" data-item-type="mx.edu.uaz.SistemaControlEscolar.modelos.Programa" _id="cboPrograma"></vaadin-combo-box>
+      </vaadin-css-layout>
+      <vaadin-css-layout style-name="input-wrapper">
+       <vaadin-combo-box caption="Materia Antecesora" data-item-type="mx.edu.uaz.SistemaControlEscolar.modelos.Materia" _id="cboMateriaAnt"></vaadin-combo-box>
+      </vaadin-css-layout>
+     </vaadin-css-layout>
+    </vaadin-css-layout>
+   </vaadin-css-layout>
+   <vaadin-css-layout style-name="form-section" width-full>
+    <vaadin-css-layout style-name="input-group" width-full>
+     <vaadin-css-layout style-name="input-wrapper">
+      <vaadin-horizontal-layout>
+       <vaadin-button style-name="primary" plain-text _id="btnGuardar">
+         Guardar 
+       </vaadin-button>
+       <vaadin-button plain-text _id="btnCancelar">
+         Cancelar 
+       </vaadin-button>
+      </vaadin-horizontal-layout>
+     </vaadin-css-layout>
+    </vaadin-css-layout>
+   </vaadin-css-layout>
+  </vaadin-css-layout>
+ </body>
+</html>

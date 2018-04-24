@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="mappers">
+
+	<insert id="altaMateria" parameterType="Materia" >
+		INSERT INTO materias
+			(materia, creditos, idMateriaAnt, idPrograma)
+		VALUES
+			(#{materia},#{creditos},#{materiaAnt.idMateria},#{programa.idPrograma})	
+					
+	</insert>
+	
+	<update id="modificarMateria" parameterType="Materia">
+		UPDATE materias
+		SET 
+			materia=#{materia},
+			creditos=#{creditos}, 
+			idMateriaAnt=#{materiaAnt.idMateria}, 
+			idPrograma=#{programa.idPrograma}
+		WHERE
+			idMateria=#{idMateria }
+				
+	</update>
+	
+	<select id="obtenerTodasMaterias" resultMap="resultMapMaterias">
+		SELECT
+			M.idMateria, M.materia, M.creditos,P.idPrograma,P.programa,M.idMateriaAnt
+		FROM
+			materias M INNER JOIN programa P on M.idPrograma=P.idPrograma;
+	
+	</select>
+	
+	<resultMap type="Materia" id="resultMapMaterias">
+		<id property="idMateria" column="idMateria"/>
+		<result property="creditos" column="creditos"/>
+		<result property="materia" column="materia"/>
+		
+		<association property="programa" javaType="Programa">
+			<id property="idPrograma" column="idPrograma"/>
+			<result property="programa" column="programa"/>
+		</association>
+		
+		<association 
+			property="materiaAnt" 
+			javaType="Materia" 
+			select="buscaMateria" 
+			column="idMateriaAnt"
+		/>			
+			
+	</resultMap>
+	<select id="buscaMateria" resultType="Materia">
+		SELECT * 
+		FROM materias
+		WHERE idMateria=#{idMateriaAnt}
+		
+	</select>
+	
+	<delete id="eliminarMaterias" >	
+		DELETE FROM materias
+		WHERE idMateria in (
+			<foreach collection="list" separator="," item="materia">
+				#{materia.idMateria}			
+			</foreach>
+		)
+	</delete>
+	
+</mapper>
+	
+ 
