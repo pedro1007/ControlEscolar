@@ -31,7 +31,15 @@
 			idUsuario=#{idUsuario}
 				
 	</update>
-	
+	<update id="confirmaCuenta" parameterType="Usuario">
+		UPDATE usuario
+		SET 
+			estatus = 1,
+			cadena = ''			
+		WHERE
+			idUsuario=#{idUsuario}
+				
+	</update>
 	<select id="obtenerTodosUsuarios" resultMap="resultMapUsuario">
 		SELECT
 			U.idUsuario, U.nombre, U.apellidoPaterno, U.apellidoMaterno, U.usuario, 

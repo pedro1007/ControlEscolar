@@ -26,6 +26,13 @@ public class ADUsuario {
 			sesion.insert("altaUsuario", usuario);
 			sesion.commit();
 			ok = true;
+		} catch (Exception e) {
+			Notification.show("No se pudo crear el usuario "+e.getMessage(), Notification.Type.ERROR_MESSAGE);
+		}
+		finally {
+			sesion.close();
+		}	
+		try {
 			EnviarCorreo enviarCorreo = new EnviarCorreo();
 			enviarCorreo.sendMail(
 					usuario.getUsuario(),
@@ -33,13 +40,9 @@ public class ADUsuario {
 					usuario.getCadena(), 
 					usuario.getNombre(), 
 					usuario.getApellidoPaterno());
-			
 		} catch (Exception e) {
-			Notification.show("No se pudo crear el usuario "+e.getMessage(), Notification.Type.ERROR_MESSAGE);
-		}
-		finally {
-			sesion.close();
-		}		
+			Notification.show("No se puedo enviar correo de confirmación "+e.getMessage(),Notification.Type.ERROR_MESSAGE);
+		}			
 		return ok;		
 	}
 	
@@ -105,4 +108,29 @@ public class ADUsuario {
 		}
 		return user;
 	}
+	
+	public boolean confirmaCuenta(Usuario usuario) {
+		boolean ok = false;
+		Usuario user = buscaUsuario(usuario);
+		if (user != null) {
+			if (user.getCadena().equals(usuario.getCadena())){
+				SqlSession sesion = Config.abreSesion();
+				try {
+					sesion.update("confirmaCuenta", user);
+					sesion.commit();
+					ok = true;
+				}
+				catch (Exception e) {
+					Notification.show("No se pudo activar la cuenta"+e.getMessage(), Notification.Type.ERROR_MESSAGE);
+				}
+				finally {
+					sesion.close();			
+				}
+			}
+		}
+		
+		return ok;
+		
+	}
+	
 }

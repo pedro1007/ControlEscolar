@@ -13,8 +13,10 @@ import com.vaadin.server.SystemMessagesProvider;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.server.VaadinSession;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 
+import mx.edu.uaz.SistemaControlEscolar.Design.ConfirmarCuenta;
 import mx.edu.uaz.SistemaControlEscolar.Design.Login;
 import mx.edu.uaz.SistemaControlEscolar.Design.Principal;
 import mx.edu.uaz.SistemaControlEscolar.Design.PrincipalDesign;
@@ -33,9 +35,21 @@ public class ControlEscolarUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        VaadinSession.getCurrent().getSession().setMaxInactiveInterval(150);
-    		setContent(new Login());
-        
+    		String cadena = null;
+    		String usuario = null;
+    		try {
+			cadena = vaadinRequest.getParameter("user");
+			usuario = vaadinRequest.getParameter("logs");
+		} catch (Exception e) {
+			Notification.show("Parámetros no válidos");
+		}
+    		if (cadena != null && usuario != null) {
+			setContent(new ConfirmarCuenta(usuario, cadena));
+		}
+    		else {
+    			VaadinSession.getCurrent().getSession().setMaxInactiveInterval(150);
+        		setContent(new Login());
+    		}        
     }
 
     @WebServlet(urlPatterns = "/*", name = "ControlEscolarUIServlet", asyncSupported = true)
