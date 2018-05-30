@@ -30,7 +30,7 @@ import mx.edu.uaz.SistemaControlEscolar.utils.BuscaComponentes;
 public class UsuariosLista extends VerticalLayout {
 	
 	private Grid<Usuario> grid;
-	private Button btnEliminar;
+	private Button btnEliminar, btnReporte;
 	
 	public UsuariosLista() {
 		grid = new Grid<Usuario>(Usuario.class);
@@ -90,8 +90,19 @@ public class UsuariosLista extends VerticalLayout {
 				}
 		});
 		
+		btnReporte = new Button("Generar constancia");
+		btnReporte.addClickListener(new ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+				UI.getCurrent().addWindow(new VentanaReporte(0));
+				
+			}
+		});
+		
 		addComponent(grid);
 		addComponent(btnEliminar);
+		addComponent(btnReporte);
 		
 	}
 	
