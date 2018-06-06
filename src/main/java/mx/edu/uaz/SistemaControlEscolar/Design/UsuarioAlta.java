@@ -3,11 +3,15 @@ package mx.edu.uaz.SistemaControlEscolar.Design;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import com.vaadin.data.Binder;
 import com.vaadin.data.validator.EmailValidator;
 import com.vaadin.data.validator.RegexpValidator;
+import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.Image;
+import com.vaadin.ui.JavaScript;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.UI;
@@ -16,6 +20,9 @@ import mx.edu.uaz.SistemaControlEscolar.enlacedatos.ADEstado;
 import mx.edu.uaz.SistemaControlEscolar.enlacedatos.ADUsuario;
 import mx.edu.uaz.SistemaControlEscolar.modelos.Estado;
 import mx.edu.uaz.SistemaControlEscolar.modelos.Usuario;
+import mx.edu.uaz.SistemaControlEscolar.utils.BuscaComponentes;
+import uaz.edu.mx.SistemaControlEscolar.utils.CadenaAleatoria;
+import uaz.edu.mx.SistemaControlEscolar.utils.SubirFoto;
 
 public class UsuarioAlta extends UsuarioAltaDesign {
 	private Usuario usuario;
@@ -26,23 +33,22 @@ public class UsuarioAlta extends UsuarioAltaDesign {
 	public UsuarioAlta(Usuario usuario) {
 		caption = "Actualizar";
 		this.usuario = usuario;
-		edicion = true;
-		
+		edicion = true;		
 		enlaceDatos();
+		cssLFoto.setVisible(true);
+	
 	}
 	
 	public UsuarioAlta(){
 		caption = "Registrar";
 		usuario = new Usuario();
-		edicion = false;
-		
-		enlaceDatos();
+		edicion = false;		
+		enlaceDatos();	
 		
 	}
 		
 	private void enlaceDatos() {
-		binder = new Binder<>(Usuario.class);
-		
+		binder = new Binder<>(Usuario.class);		
 		
 		binder.setBean(usuario);
 		
@@ -120,9 +126,21 @@ public class UsuarioAlta extends UsuarioAltaDesign {
 							Notification.Type.ERROR_MESSAGE
 					);
 				}
-				
-				
+							
 			}
 		});
+		SubirFoto receiver = new SubirFoto(imgFotoAlta, usuario);
+		upFoto.setReceiver(receiver);
+		upFoto.addSucceededListener(receiver);
+		upFoto.addFinishedListener(receiver);
+		
+		imgFotoAlta.setId("imgFotoAlta");
+		imgFotoAlta.setWidth("100px");
+		
+		imgFotoAlta.setSource(receiver.getFoto());
+		String js = "var img=document.getElementById('imgFotoAlta');"
+				+ "img.src=img.src+'?id="+new CadenaAleatoria().getCadenaAleatoria(20)+"';";
+		JavaScript.getCurrent().execute(js);
+		
 	}
 }

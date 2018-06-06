@@ -28,8 +28,8 @@ public class EnviarCorreo {
 		     
 		Session sesion = Session.getDefaultInstance(propiedades, new Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("ingsoftware@uaz.edu.mx", "@lexmau13");
-		//            return new PasswordAuthentication("alexadmon@ingsoftware.reduaz.mx", "alexuaz10");
+				return new PasswordAuthentication("ingsoftware@uaz.edu.mx", "xxxx");
+		//            return new PasswordAuthentication("alexadmon@ingsoftware.reduaz.mx", "xxxx");
 		        }
 		    });
 	    mensaje = new MimeMessage(sesion);

@@ -5,7 +5,9 @@ import com.vaadin.annotations.DesignRoot;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.declarative.Design;
 
 /** 
@@ -30,8 +32,8 @@ public class PrincipalDesign extends HorizontalLayout {
 	protected HorizontalLayout hlTitulo;
 	protected Label viewTitle;
 	protected HorizontalLayout hlUsuario;
-	protected Label lblUsuario;
-	protected Button btnSalir;
+	protected Image imgUsuario;
+	protected MenuBar menuPerfil;
 	protected CssLayout content;
 	protected CssLayout contenedor;
 

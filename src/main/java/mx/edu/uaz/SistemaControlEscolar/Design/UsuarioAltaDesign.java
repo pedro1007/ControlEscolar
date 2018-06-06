@@ -6,8 +6,10 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.DateField;
+import com.vaadin.ui.Image;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.Upload;
 import com.vaadin.ui.declarative.Design;
 
 /** 
@@ -30,6 +32,9 @@ public class UsuarioAltaDesign extends CssLayout {
 	protected TextField tfMail;
 	protected TextField tfUsuario;
 	protected PasswordField pfPassword;
+	protected CssLayout cssLFoto;
+	protected Upload upFoto;
+	protected Image imgFotoAlta;
 	protected Button btnRegistrar;
 	protected Button btnCancelar;
 

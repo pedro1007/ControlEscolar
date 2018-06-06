@@ -12964,3 +12964,16 @@ div.v-layout.v-horizontal.v-widget {
 .TemaControl .right-30 {
 	padding-right: 33px;
 }
+
+.TemaControl .ventana-report {
+	box-shadow: 13px 10px 13px -4px black;
+}
+
+.TemaControl .ventana-report .v-window-header {
+	background-color: black;
+	color: white;
+}
+
+.TemaControl .ventana-report .v-window {
+	box-shadow: 13px 10px 13px -4px black;
+}
