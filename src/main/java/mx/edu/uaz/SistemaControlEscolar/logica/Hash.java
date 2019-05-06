@@ -2,11 +2,10 @@ package mx.edu.uaz.SistemaControlEscolar.logica;
 
 public class Hash {
 	 
-    /* Retorna un hash a partir de un tipo y un texto */
-    public static String getHash(String txt, String hashType) {
+    public static String sha1(String txt) {
         try {
             java.security.MessageDigest md = java.security.MessageDigest
-                    .getInstance(hashType);
+                    .getInstance("SHA1");
             byte[] array = md.digest(txt.getBytes());
             StringBuffer sb = new StringBuffer();
             for (int i = 0; i < array.length; ++i) {
@@ -19,15 +18,4 @@ public class Hash {
         }
         return null;
     }
- 
-    /* Retorna un hash MD5 a partir de un texto */
-    public static String md5(String txt) {
-        return Hash.getHash(txt, "MD5");
-    }
- 
-    /* Retorna un hash SHA1 a partir de un texto */
-    public static String sha1(String txt) {
-        return Hash.getHash(txt, "SHA1");
-    }
- 
 }
