@@ -19,17 +19,17 @@ public class VentanaReporte extends Window{
 		setIcon(VaadinIcons.GRID);
 		setStyleName("ventana-report");
 		
-//		bfConstancia = new BrowserFrame("", 
-//        		new ExternalResource("http://localhost:8090/birt/preview?__report=reportes/credenciales.rptdesign&__format=pdf", "application/pdf"));
+		bfConstancia = new BrowserFrame("", 
+        		new ExternalResource("http://localhost:8090/birt/preview?__report=reportes/credenciales.rptdesign&__format=pdf", "application/pdf"));
 		
 		String basepath = VaadinService.getCurrent()
                 .getBaseDirectory().getAbsolutePath();
 
 //Image as a file resource
-FileResource resource = new FileResource(new File(basepath +
-                      "/pdf/doc1.doc"));
+//FileResource resource = new FileResource(new File(basepath +
+//                      "/pdf/doc1.doc"));
 
-		bfConstancia = new BrowserFrame("", resource);
+//		bfConstancia = new BrowserFrame("", resource);
 		bfConstancia.setSizeFull();
 		
 		setContent(bfConstancia);

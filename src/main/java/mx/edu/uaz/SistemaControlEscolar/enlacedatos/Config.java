@@ -16,7 +16,7 @@ public class Config {
 			Reader reader = Resources.getResourceAsReader("mx/edu/uaz/SistemaControlEscolar/db/ConfigDB.xml");
 			sqlMapper = new SqlSessionFactoryBuilder().build(reader);
 		} catch (Exception e) {
-			Notification.show("Error al leer el archivo de configuración de la base de datos: ", e.getCause().getMessage(), Notification.Type.ERROR_MESSAGE);
+			Notification.show("Error al leer el archivo de configuración de la base de datos: ", e.getMessage(), Notification.Type.ERROR_MESSAGE);
 		}
 	}
 	
@@ -26,7 +26,7 @@ public class Config {
 			SqlSession sesion = sqlMapper.openSession();
 			return sesion;
 		}catch (Exception e) {
-			Notification.show("Error al abrir sesión en la base de datos", e.getCause().getMessage(),Notification.Type.ERROR_MESSAGE);
+			Notification.show("Error al abrir sesión en la base de datos", e.getMessage(),Notification.Type.ERROR_MESSAGE);
 			return null;
 		}
 		

@@ -1,11 +1,9 @@
 package mx.edu.uaz.SistemaControlEscolar.Design;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import org.omg.PortableInterceptor.USER_EXCEPTION;
 import org.vaadin.dialogs.ConfirmDialog;
 
 import com.vaadin.icons.VaadinIcons;
@@ -21,7 +19,6 @@ import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.renderers.ButtonRenderer;
 
 import mx.edu.uaz.SistemaControlEscolar.enlacedatos.ADUsuario;
-import mx.edu.uaz.SistemaControlEscolar.modelos.Estado;
 import mx.edu.uaz.SistemaControlEscolar.modelos.Usuario;
 import mx.edu.uaz.SistemaControlEscolar.utils.BuscaComponentes;
 
@@ -72,7 +69,7 @@ public class UsuariosLista extends VerticalLayout {
 						    new ConfirmDialog.Listener() {
 						        public void onClose(ConfirmDialog dialog) {
 					                if (dialog.isConfirmed()) {
-					                		Set<Usuario> usuarios = grid.getSelectedItems();
+					                	Set<Usuario> usuarios = grid.getSelectedItems();
 										List<Usuario> users = new ArrayList<Usuario>();
 										users.addAll(usuarios);
 										ADUsuario adUsuario = new ADUsuario();

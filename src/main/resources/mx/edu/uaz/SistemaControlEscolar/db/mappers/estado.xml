@@ -6,7 +6,7 @@
 
 	<select id="obtenerTodosEstados" resultType="Estado" >
 		select idEstado, estado
-		from estado;			
+		from estado		
 	</select>
 
 </mapper>

@@ -15409,6 +15409,10 @@ div.v-layout.v-horizontal.v-widget {
 	display: none;
 }
 
+.TemaControl .login-form .v-captionwrapper {
+	width: 100%;
+}
+
 .TemaControl .btn-siguiente {
 	background-color: #005da6;
 	color: white;

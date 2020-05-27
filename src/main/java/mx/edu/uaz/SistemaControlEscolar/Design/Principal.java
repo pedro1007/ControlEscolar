@@ -1,14 +1,8 @@
 package mx.edu.uaz.SistemaControlEscolar.Design;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
 import org.vaadin.dialogs.ConfirmDialog;
 
-import com.vaadin.server.VaadinService;
 import com.vaadin.server.VaadinSession;
-import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
@@ -16,7 +10,6 @@ import com.vaadin.ui.JavaScript;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.MenuBar.MenuItem;
 
-import mx.edu.uaz.SistemaControlEscolar.enlacedatos.ADUsuario;
 import mx.edu.uaz.SistemaControlEscolar.modelos.Usuario;
 import uaz.edu.mx.SistemaControlEscolar.utils.CadenaAleatoria;
 import uaz.edu.mx.SistemaControlEscolar.utils.SubirFoto;

@@ -19,7 +19,7 @@ public class ADUsuario {
 		usuario.setPassword(Hash.sha1(usuario.getPassword()));
 		CadenaAleatoria cadenaAleatoria = new CadenaAleatoria();
 		usuario.setCadena(cadenaAleatoria.getCadenaAleatoria(50));
-		usuario.setEstatus('0');
+		usuario.setEstatus('1');
 		
 		SqlSession sesion = Config.abreSesion();		
 		try {
@@ -32,7 +32,7 @@ public class ADUsuario {
 		finally {
 			sesion.close();
 		}	
-		try {
+		/*try {
 			EnviarCorreo enviarCorreo = new EnviarCorreo();
 			enviarCorreo.sendMail(
 					usuario.getUsuario(),
@@ -42,7 +42,7 @@ public class ADUsuario {
 					usuario.getApellidoPaterno());
 		} catch (Exception e) {
 			Notification.show("No se puedo enviar correo de confirmación "+e.getMessage(),Notification.Type.ERROR_MESSAGE);
-		}			
+		}	*/		
 		return ok;		
 	}
 	
